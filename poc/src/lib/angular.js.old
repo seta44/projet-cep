@@ -1,0 +1,85 @@
+var appcep = angular.module('appcep',['xml']);
+
+//settings
+var shopURL = 'http://localhost/prestashop_1.6.0.9/api/';
+var WS_KEY = '1YAFAHJNHFC6MJPHWYK77C2BX58HRAVU';
+var WS_SOURCE = shopURL+'/api';
+/*
+appcep.config(['$httpProvider', function($httpProvider) {
+        //$httpProvider.defaults.useXDomain = true;
+        //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+		$httpProvider.interceptors.push('xmlHttpInterceptor');
+    }
+]);
+*/
+
+/*
+appcep.factory('UserFactory', function ($resource) {
+    return $resource('http://18TTP7RAUQ534HBNCA9HHVAT9KGW1ZYK@coqenpap.com/api/products/', {}, {
+        query: {
+            method: 'GET',
+            params: {},
+            isArray: false
+        }
+    })
+});
+
+
+appcep.controller('MyCtrl1', ['$scope', 'UserFactory', function ($scope, UserFactory) {
+    
+	UserFactory.get({}, function (userFactory) {
+        $scope.products = userFactory.firstName;
+    })
+}]);
+*/
+
+
+appcep.factory('DataSource', ['$http',function($http){
+  return {
+    get: function(source,WS_KEY,callback){
+      $http({
+        url: source,
+        method: 'GET',
+        params: {ws_key:WS_KEY}
+      }).
+      success(function(data, status) {
+        //console.log('Request succeeded');
+        callback(data);
+      }).
+      error(function(data, status) {
+        console.log('Request failed ' + status);
+      });
+    }
+  };
+}]);
+
+appcep.controller('MyCtrl1', ['$scope', '$http', function ($scope, $http) {
+	var ws_url = "http://localhost/prestashop_1.6.0.9/api/"
+	
+	var req = {
+		method: 'get',
+		url: ws_url + 'products/',
+		params: {
+			ws_key: '1YAFAHJNHFC6MJPHWYK77C2BX58HRAVU',
+			/*Authorization : 'Basic MVlBRkFISk5IRkM2TUpQSFdZSzc3QzJCWDU4SFJBVlU6',*/
+			output_format: 'JSON',
+			display : 'full'
+		}
+	}
+	
+	/* http://127.0.0.1/prestashop/api/?ws_key=12MPF3UH1Q1X5A9R7X1PDC2PFBH9TCMJ
+		http://localhost/prestashop_1.6.0.9/api/?ws_key=1YAFAHJNHFC6MJPHWYK77C2BX58HRAVU&output_format=JSON
+	*/
+	
+	$http(req).success(function(data){
+		console.log(data);
+		$scope.products = data.products;
+	}).error(function(error, statut){
+		console.log("Request error " + statut);
+		console.log("Request error " + error);
+	});
+	
+	
+	
+	
+}]);

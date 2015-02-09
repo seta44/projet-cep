@@ -1,0 +1,39 @@
+<span>{{ product.id }}</span>
+<span>{{ product.name }}</span>
+<span>{{ product.quantity }}</span>
+<span>{{ product.price }}</span>
+<span>{{ product.description_short }}</span>
+<span>{{ product.available_now }}</span>
+<img ng-src="{{ product.urlImg }}"/>
+
+
+<span>
+	Qt&eacute; : <select name="quantity" id="quantity" ng-model="q" ng-options="v for v in qtyOpt"></select>
+</span>
+<a class="btn btn-default" role="button" href="home.html#cart/{{ product.id }}">Ajouter au panier</a>
+
+
+
+<!--
+<ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" quantity="1" quantity-max="30" data="product">Ajouter au panier</ngcart-addtocart>
+
+<script type="text/ng-template" id="template/ngCart/addtocart.html">
+<div ng-hide="attrs.id">
+    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+</div>
+
+<div ng-show="attrs.id">
+    <div>
+        <span ng-show="quantityMax">
+			Qt&eacute; :
+            <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
+        </span>
+        <a class="btn btn-sm btn-primary" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude></a>
+    </div>
+
+    <mark  ng-show="inCart()">
+        This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
+    </mark>
+</div>
+</script>
+-->
