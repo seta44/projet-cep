@@ -5,16 +5,16 @@
 <span>{{ product.description_short }}</span>
 <span>{{ product.available_now }}</span>
 <img ng-src="{{ product.urlImg }}"/>
+<span>Qt&eacute; : <select name="quantity" id="quantity" ng-model="q" ng-options="v for v in qtyOpt"></select></span>
+<button class="add" ng-click="addCart(product)">Ajouter au panier</button>
 
 
-<span>
-	Qt&eacute; : <select name="quantity" id="quantity" ng-model="q" ng-options="v for v in qtyOpt"></select>
-</span>
-<a class="btn btn-default" role="button" href="home.html#cart/{{ product.id }}">Ajouter au panier</a>
+
 
 
 
 <!--
+<a class="btn btn-default" role="button" href="index.html#cart/{{ product.id }}">Ajouter au panier</a>
 <ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" quantity="1" quantity-max="30" data="product">Ajouter au panier</ngcart-addtocart>
 
 <script type="text/ng-template" id="template/ngCart/addtocart.html">

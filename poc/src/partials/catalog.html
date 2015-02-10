@@ -1,18 +1,3 @@
-<!--
-	<ul>
-		<li ng-repeat="product in prestashop">
-			<a ui-sref="productDetail({produtId : product.id })">Lien</a>
-			<span>{{ product.id }}</span>
-			<span>{{ product.name }}</span>
-			<span>{{ product.quantity }}</span>
-			<span>{{ product.price }}</span>
-			<span>{{ product.description_short }}</span>
-			<span>{{ product.available_now }}</span>
-			<img ng-src="{{ product.urlImg }}"/>
-			
-		</li>
-	</ul>
--->
 <div class="container">
 	<table class="table">
 		<thead>
@@ -34,7 +19,7 @@
 				<td>{{ product.description_short }}</td>
 				<td>{{ product.available_now }}</td>
 				<td><img ng-src="{{ product.urlImg }}" class="img-responsive" width="250" height="250"/></td>
-				<td><a class="btn btn-default" role="button" href="home.html#product/{{ product.id }}">Consulter</a></td>
+				<td><a class="btn btn-default" role="button" href="index.html#product/{{ product.id }}">Consulter</a></td>
 				<!--<td><a class="btn btn-default" role="button" ui-sref="productDetail({produtId : product.id })">Consulter</a></td>-->
 			</tr>
 		</tbody>

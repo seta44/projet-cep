@@ -1,0 +1,25 @@
+﻿<div class="container">
+<table id="cart" class="table">
+    <tr>
+        <th class="item" colspan="2">Article</th>
+        <th class="item" colspan="2">Name</th>
+        <th class="price">Prix</th>
+        <th class="qty">Quantité</th>
+        <th class="total">Total</th>
+    </tr>
+    <tr class="product" ng-repeat="row in cart.rows">
+        <td class="img"><a href="#/product/{{row.product.id}}"><img ng-src="img/{{row.game.id}}.jpg" alt="Article"/></a></td>
+        <td class="item"><a href="#/product/{{row.product.id}}">{{row.product.name}}</a></td>
+        <td class="price">{{row.product.price | number:2}} €</td>
+        <td class="qty"><input class="qty" ng-model="row.qty"/></td>
+        <td class="total">{{row.product.price * row.qty | number:2}} €</td>
+    </tr>
+    <tr ng-show="cart.empty()">
+        <td colspan="5" class="vide">Votre panier est vide</td>
+    </tr>
+</table>
+
+<div class="totalHT">Total HT : {{cart.totalHT() | number:2}} €</div>
+<div class="totalTTC">Total TTC de votre commande : {{cart.total() | number:2}} €</div>
+<a class="btn btn-default" role="button" href="http://localhost/prestashop_1.6.0.9/commande">Commander</a>
+</div>
